@@ -84,7 +84,8 @@ def _print_tag_metrics(tag, tag_results):
 
 def precision_recall_f1(y_true, y_pred, print_results=True, short_report=False):
     # Find all tags
-    tags = sorted(set(tag[2:] for tag in y_true + y_pred if tag is not None and tag != 'O'))
+    tags = sorted(set(tag[2:] for tag in y_true + y_pred if tag != 'O'))
+
     results = OrderedDict((tag, OrderedDict()) for tag in tags)
     n_tokens = len(y_true)
     total_correct = 0
